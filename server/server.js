@@ -1,0 +1,17 @@
+// when ready for github
+// git commit -m "first commit"
+// git branch -M main
+// git remote add origin https://github.com/e-t-trudell/product_manager_I.git
+// git push -u origin main
+const express = require('express');
+const app = express();
+const port = 8000;
+const cors = require('cors');
+app.use(cors())
+app.use(express.json());
+app.use(express.urlencoded({extended:true}));
+
+require('./config/mongoose.config')
+require('./routes/product.routes')(app);
+    
+app.listen(port, () => console.log(`Listening on port: ${port}`) );
